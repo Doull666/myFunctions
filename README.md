@@ -44,3 +44,10 @@ create function database.myfunction as 'com.ll.functions.udf.MyUDF' using jar 'h
 1. hive构建function会自动带上库名
 - 构建function时，需添加database名称，即即 `[database].[function]`
 - 如果不填写database，这会取当前database自动补全function。
+
+## 使用累积
+1. 使用外部第三方 jar 包
+    - 当使用外部 jar 包时
+    - 需将外部第三方 jar 包上传至 hdfs 上
+    - 使用命令 `add jars hdfs:///tmp/fastjson-1.2.41.jar;`
+    - 否则在使用自定义函数时，会报错找不到类

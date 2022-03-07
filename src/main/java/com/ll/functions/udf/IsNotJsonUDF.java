@@ -1,6 +1,7 @@
 package com.ll.functions.udf;
 
 import com.alibaba.fastjson.JSON;
+import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.hive.ql.exec.UDF;
 
 /**
@@ -14,7 +15,7 @@ import org.apache.hadoop.hive.ql.exec.UDF;
 public class IsNotJsonUDF extends UDF {
 
     //判断输入字符串是否为json格式
-    public static String evaluate(String str) {
+    public String evaluate(String str) {
 
         try {
             Object parse = JSON.parse(str);
@@ -22,12 +23,13 @@ public class IsNotJsonUDF extends UDF {
         } catch (Exception e) {
             return str;
         }
+
     }
 
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         String str="dasf[{\"freezing_targets_ids\":\"\",\"freezing_desc\":\"\",\"freezing_behavior\":-1,\"freezing_amount\":null,\"freezing_targets_names\":\"\"}]";
         System.out.println(IsNotJsonUDF.evaluate(str));
-    }
+    }*/
 
 }
